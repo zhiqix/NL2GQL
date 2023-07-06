@@ -71,7 +71,7 @@ NL2GQL（Natrual Language to Graph Query Language）是一组利用大模型的�
 
 本项目开源协议依照基座模型的开源协议
 
-## :people: 小组成员
+## 小组成员
 
 Yuhang Zhou、Yu He、Siyu Tian、Dan Chen from FDU
 
