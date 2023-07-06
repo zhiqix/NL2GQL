@@ -4,10 +4,10 @@
 
 ### 模型
 
-- [**NL2GQLv0.1**]基于从官方示例中抽取的数据，构造出7000条未经筛选的数据进行训练，共四个模型：NL2GQL_MOSS_v0.1、NL2GQL_ChatGLM_v0.1、NL2GQL_BLOOM_v0.1、NL2GQL_Flant5_v0.1，将会逐步开源。
-- [**NL2GQLv0.2**]基于从官方示例中抽取的数据，添加部分以检索作In-context Learning的数据进行训练，共1w2条。共四个模型：NL2GQL_MOSS_v0.2、NL2GQL_ChatGLM_v0.2、NL2GQL_BLOOM_v0.2、NL2GQL_Flant5_v0.2，将会逐步开源。
-- [**NL2GQLv1.0**]基于从官方说明文档中抽取的800条数据，经过人工筛选及数据生成后，共3k余条数据进行训练。利用LLM的code生成能力，结合上In-context Learning以及Chain of Thought思路对ChatGLM2以及浦语-7B模型进行微调，已开源NL2GQL_ChatGLM2_v1.0，近期将开源NL2GQL_Puyu_v1.0。
-- [**NL2GQLv1.1**]基于从官方说明文档中抽取的4k条数据，经过人工筛选及数据生成后，共1w6条数据进行训练，并保证训练数据schema的多样性，训练完成后模型及数据一并开源。
+- [**NL2GQLv0.1**]基于从NebulaGraph官方示例中抽取的数据，构造出7000条未经筛选的数据进行训练，共四个模型：NL2GQL_MOSS_v0.1、NL2GQL_ChatGLM_v0.1、NL2GQL_BLOOM_v0.1、NL2GQL_Flant5_v0.1，将会逐步开源。
+- [**NL2GQLv0.2**]基于从NebulaGraph官方示例中抽取的数据，添加部分以检索作In-context Learning的数据进行训练，共1w2条。共四个模型：NL2GQL_MOSS_v0.2、NL2GQL_ChatGLM_v0.2、NL2GQL_BLOOM_v0.2、NL2GQL_Flant5_v0.2，将会逐步开源。
+- [**NL2GQLv1.0**]基于从NebulaGraph官方说明文档中抽取的800条数据，经过人工筛选及数据生成后，共3k余条数据进行训练。利用LLM的code生成能力，结合上In-context Learning以及Chain of Thought思路对ChatGLM2以及浦语-7B模型进行微调，已开源NL2GQL_ChatGLM2_v1.0，近期将开源NL2GQL_Puyu_v1.0。
+- [**NL2GQLv1.1**]基于从NebulaGraph官方说明文档中抽取的4k条数据，经过人工筛选及数据生成后，共1w6条数据进行训练，并保证训练数据schema的多样性，训练完成后模型及数据一并开源。
 - [**NL2GQLv1.2**]基于NL2GQLv1.1搭建ChatGraph，并在此基础上叠加上人类及数据库反馈数据进行训练。
 
 ### 数据
