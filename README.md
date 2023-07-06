@@ -52,6 +52,7 @@ NL2GQL（Natrual Language to Graph Query Language）是一组利用大模型的�
 <details><summary><b>添加限制</b></summary>
 
 ![image](https://github.com/zhiqix/NL2GQL/blob/main/image/image3.png)
+</details>
 
 <details><summary><b>创建关系</b></summary>
 
