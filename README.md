@@ -19,6 +19,7 @@
 
 ## :spiral_notepad: 开源计划
 
+(暂时不按计划更新，新思路新版本 will coming soon)
 - 2023.7.15 开源NL2GQL_ChatGLM2_v1.1。
 - 2023.7.20 利用Langchain以及LLaMA_Index搭建pipeline，开源ChatGraph项目初步结果。
 - 2023.7.25 开源NL2GQL_Puyu_v1.0及NL2GQL_Puyu_v1.1。
@@ -72,16 +73,12 @@ NL2GQL（Natrual Language to Graph Query Language）是一组利用大模型的�
 
 本项目开源协议依照基座模型的开源协议
 
-## 小组成员
-
-Yuhang Zhou、Yu He、Siyu Tian、Dan Chen from FDU
 
 ## :heart: 致谢
 
 - [VESOFT](https://github.com/vesoft-inc): 数据支持
 - [ChatGLM2](https://github.com/THUDM/ChatGLM2-6B): 基座模型
 - [MOSS](https://github.com/OpenLMLab/MOSS): 基座模型
-- [Financial Technology Research Institute,Fudan University](https://cs.fudan.edu.cn/): 算力支持
 
 ## 写在最后
 
