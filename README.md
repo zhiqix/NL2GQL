@@ -1,2 +1,2 @@
 # NL2GQL
-The new code and data will be organized and open source within two days
+The new version of the code and data has been uploaded, and readme will be updated soon.
