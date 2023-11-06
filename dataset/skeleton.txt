@@ -1,0 +1,208 @@
+# the request CRUD function
+class CRUD():
+    def CREATE_SPACE(self):
+        """
+        CREATE SPACE [IF NOT EXISTS] <graph_space_name> (
+        [partition_num = <partition_number>,]
+        [replica_factor = <replica_number>,]
+        vid_type = {FIXED_STRING(<N>) | INT64}
+        )
+
+        [COMMENT = '<comment>'];
+        """
+        #Example:CREATE SPACE basketballplayer(partition_num=15, replica_factor=1, vid_type=fixed_string(30));
+
+    def CREATE_Tag_Edge(self):
+        """
+        CREATE {TAG | EDGE} [IF NOT EXISTS] {<tag_name> | <edge_type_name>}
+        (
+          <prop_name> <data_type> [NULL | NOT NULL] [DEFAULT <default_value>] [COMMENT '<comment>']
+          [{, <prop_name> <data_type> [NULL | NOT NULL] [DEFAULT <default_value>] [COMMENT '<comment>']} ...]
+        )
+        [TTL_DURATION = <ttl_duration>]
+        [TTL_COL = <prop_name>]
+        [COMMENT = '<comment>'];
+        """
+        #Example:CREATE TAG player(name string, age int);
+        #Example:CREATE EDGE follow(degree int);
+
+    def INSERT(self):
+        """
+        INSERT VERTEX [IF NOT EXISTS] [tag_props, [tag_props] ...]
+        VALUES <vid>: ([prop_value_list])
+
+        tag_props:
+          tag_name ([prop_name_list])
+
+        prop_name_list:
+           [prop_name [, prop_name] ...]
+
+        prop_value_list:
+           [prop_value [, prop_value] ...]
+        """
+        #Example:INSERT VERTEX team(name) VALUES "team203":("Trail Blazers"), "team204":("Spurs");
+        #Example:INSERT VERTEX player(name, age) VALUES "player101":("Tony Parker", 36);
+
+        """
+        INSERT EDGE [IF NOT EXISTS] <edge_type> ( <prop_name_list> ) VALUES
+        <src_vid> -> <dst_vid>[@<rank>] : ( <prop_value_list> )
+        [, <src_vid> -> <dst_vid>[@<rank>] : ( <prop_value_list> ), ...];
+
+        <prop_name_list> ::=
+            [ <prop_name> [, <prop_name> ] ...]
+
+        <prop_value_list> ::=
+            [ <prop_value> [, <prop_value> ] ...]
+            """
+        # Example:INSERT EDGE follow(degree) VALUES "player102" -> "player100":(75);
+        # Example:INSERT EDGE serve(start_year, end_year) VALUES "player101" -> "team204":(1999, 2018),"player102" -> "team203":(2006,  2015);
+
+
+    def QUERY(self):
+        #     GO 语句可以根据指定的条件遍历数据库。GO语句从一个或多个点开始，沿着一条或多条边遍历，返回YIELD子句中指定的信息。
+        """
+        GO [[<M> TO] <N> STEPS ] FROM <vertex_list>
+        OVER <edge_type_list> [{REVERSELY | BIDIRECT}]
+        [ WHERE <conditions> ]
+        YIELD [DISTINCT] <return_list>
+        [{ SAMPLE <sample_list> | <limit_by_list_clause> }]
+        [| GROUP BY {<col_name> | expression> | <position>} YIELD <col_name>]
+        [| ORDER BY <expression> [{ASC | DESC}]]
+        [| LIMIT [<offset>,] <number_rows>];
+        """
+        # Example:GO FROM "player101" OVER follow YIELD dst(edge) AS id | \
+        #         GO FROM $-.id OVER serve YIELD properties($$).name AS Team, \
+        #         properties($^).name AS Player;
+
+        # FETCH 语句可以获得点或边的属性。
+        """
+        FETCH PROP ON {<tag_name>[, tag_name ...] | *}
+        <vid> [, vid ...]
+        YIELD <return_list> [AS <alias>];
+        """
+        # Example:FETCH PROP ON player "player100" YIELD properties(vertex);
+        """
+        FETCH PROP ON <edge_type> <src_vid> -> <dst_vid>[@<rank>] [, <src_vid> -> <dst_vid> ...]
+        YIELD <output>;
+        """
+        # Example:FETCH PROP ON like 1->100@0 YIELD like.likeness;
+
+        # LOOKUP 语句是基于索引的，和WHERE子句一起使用，查找符合特定条件的数据。
+        """
+        LOOKUP ON {<vertex_tag> | <edge_type>}
+        [WHERE <expression> [AND <expression> ...]]
+        YIELD <return_list> [AS <alias>];
+
+        <return_list>
+            <prop_name> [AS <col_alias>] [, <prop_name> [AS <prop_alias>] ...];
+        """
+        # Example:LOOKUP ON player WHERE player.age == 40 YIELD id(vertex) as id |\nFETCH PROP ON player $-.id YIELD player.name;
+
+        # MATCH 语句是查询图数据最常用的，可以灵活的描述各种图模式，但是它依赖索引去匹配 NebulaGraph 中的数据模型，性能也还需要调优。
+        """
+        MATCH <pattern> [<clause_1>]  RETURN <output>  [<clause_2>];
+        """
+        # Example:match (v)-[]->(t)<-[]-(v:player) return v.player.name, t.team.name;
+
+    def UPDATE(self):
+
+        """
+        UPDATE VERTEX <vid> SET <properties to be updated>
+        [WHEN <condition>] [YIELD <columns>];
+        """
+        # Example:UPDATE VERTEX "player100" SET player.name = "Tim";
+
+        """
+        UPDATE EDGE ON <edge_type> <source vid> -> <destination vid> [@rank]
+        SET <properties to be updated> [WHEN <condition>] [YIELD <columns to be output>];
+        """
+        # Example:UPDATE EDGE ON follow "player101" -> "player100" SET degree = 96;
+
+    def UPSERT(self):
+        # UPSERT是UPDATE和INSERT的结合体。当使用UPSERT更新一个点或边，如果它不存在，数据库会自动插入一个新的点或边。
+        """
+        UPSERT {VERTEX <vid> | EDGE <edge_type>} SET <update_columns>
+        [WHEN <condition>] [YIELD <columns>];
+        """
+        # Example:UPSERT VERTEX "player111" SET player.name = "David", player.age = $^.player.age + 11 \
+        #         WHEN $^.player.name == "David West" AND $^.player.age > 20 \
+        #         YIELD $^.player.name AS Name, $^.player.age AS Age;
+
+    def DELETE(self):
+
+        """
+        DELETE VERTEX <vid1>[, <vid2>...]
+        """
+        # Example:DELETE VERTEX "player111", "team203";
+
+        """
+        DELETE EDGE <edge_type> <src_vid> -> <dst_vid>[@<rank>]
+        [, <src_vid> -> <dst_vid>...]
+        """
+        # Example:DELETE EDGE follow "player101" -> "team204";
+
+    def OTHER(self):
+        """主要涉及一些不常使用的运算表达式或其余关键字"""
+
+    def GET_SUBGRPAH(self):
+        """
+        GET SUBGRAPH [WITH PROP] [<step_count> {STEP|STEPS}] FROM {<vid>, <vid>...} [{IN | OUT | BOTH} <edge_type>, <edge_type>...] YIELD [VERTICES AS <vertex_alias>] [,EDGES AS <edge_alias>]
+        """
+        # Example:GET SUBGRAPH 1 STEPS FROM "player100" YIELD VERTICES AS nodes, EDGES AS relationships
+
+    def FIND_PATH(self):
+        """
+        FIND { SHORTEST | ALL | NOLOOP } PATH [WITH PROP] FROM <vertex_id_list> TO <vertex_id_list> OVER <edge_type_list> [REVERSELY | BIDIRECT] [<WHERE clause>] [UPTO <N> {STEP|STEPS}] YIELD path as <alias> [| ORDER BY $-.path] [| LIMIT <M>]
+        """
+        # Example:FIND SHORTEST PATH FROM "player102" TO "team204" OVER * YIELD path as p
+
+# the request subfunction
+class SUBFUNCTION():
+    def GROUP_BY(self):
+        """
+        GROUP BY <var> YIELD <var>, <aggregation_function(var)>
+        """
+        # Example:GO FROM "player100" OVER follow BIDIRECT YIELD $$.player.name as Name | GROUP BY $-.Name YIELD $-.Name as Player, count(*) AS Name_Count
+
+    def LIMIT(self):
+        """
+        YIELD <var> [| LIMIT [<offset_value>,] <number_rows>]
+        """
+        # Example:GO FROM "player100" OVER follow REVERSELY YIELD $$.player.name AS Friend, $$.player.age AS Age | ORDER BY $-.Age, $-.Friend | LIMIT 1, 3
+
+    def SKIP(self):
+        """
+        RETURN <var> [SKIP <offset>] [LIMIT <number_rows>]
+        """
+        # Example:MATCH (v:player{name:"Tim Duncan"}) --> (v2) RETURN v2.player.name AS Name, v2.player.age AS Age ORDER BY Age DESC SKIP 1
+
+    def SAMPLE(self):
+        """
+        <go_statement> SAMPLE <sample_list>;
+        """
+        # Example:GO 3 STEPS FROM "player100" OVER * YIELD properties($$).name AS NAME, properties($$).age AS Age SAMPLE [1,2,3];
+
+    def ORDER_BY(self):
+        """
+        <YIELD clause> ORDER BY <expression> [ASC | DESC] [, <expression> [ASC | DESC] ...]
+        """
+        # Example:FETCH PROP ON player "player100", "player101", "player102", "player103" YIELD player.age AS age, player.name AS name | ORDER BY $-.age ASC, $-.name DESC
+
+    def WHERE(self):
+        """
+        WHERE {<vertex|edge_alias>.<property_name> {>|==|<|...} <value>...}
+        """
+        # Example:MATCH (v:player) WHERE v.player.name == "Tim Duncan" XOR (v.player.age < 30 AND v.player.name == "Yao Ming") OR NOT (v.player.name == "Yao Ming" OR v.player.name == "Tim Duncan") RETURN v.player.name, v.player.age
+
+    def WITH(self):
+        """
+        MATCH $expressions WITH {nodes()|labels()|...}
+        """
+        # Example:MATCH p=(v:player{name:"Tim Duncan"})--() WITH nodes(p) AS n UNWIND n AS n1 RETURN DISTINCT n1
+
+    def UNWIND(self):
+        """
+        UNWIND <list> AS <alias> <RETURN clause>
+        """
+        # Example:UNWIND [1,2,3] AS n RETURN n
+

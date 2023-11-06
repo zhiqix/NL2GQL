@@ -1,0 +1,12 @@
+bert_score==0.3.13
+faiss==1.5.3
+jieba==0.42.1
+nltk==3.8.1
+numpy==1.25.2
+openai==0.28.1
+pandas==2.0.3
+Requests==2.31.0
+scikit_learn==1.3.2
+sentence_transformers==2.2.2
+torch==2.0.1
+transformers==4.31.0

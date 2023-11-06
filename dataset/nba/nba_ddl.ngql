@@ -1,0 +1,23 @@
+﻿# Create Space 
+CREATE SPACE `nba` (partition_num = 10, replica_factor = 1, charset = utf8, collate = utf8_bin, vid_type = FIXED_STRING(32));
+:sleep 20;
+USE `nba`;
+''
+# Create Tag: 
+CREATE TAG `bachelor` ( `name` string NULL, `speciality` string NULL) ttl_duration = 0, ttl_col = "";
+CREATE TAG `player` ( `name` string NULL, `age` int64 NULL) ttl_duration = 0, ttl_col = "";
+CREATE TAG `team` ( `name` string NULL) ttl_duration = 0, ttl_col = "";
+
+# Create Edge: 
+CREATE EDGE `like` ( `likeness` int64 NULL) ttl_duration = 0, ttl_col = "";
+CREATE EDGE `serve` ( `start_year` int64 NULL, `end_year` int64 NULL) ttl_duration = 0, ttl_col = "";
+CREATE EDGE `teammate` ( `start_year` int64 NULL, `end_year` int64 NULL) ttl_duration = 0, ttl_col = "";
+:sleep 20;
+
+# Create Index: 
+CREATE TAG INDEX `bachelor_index` ON `bachelor` ();
+CREATE TAG INDEX `player_age_index` ON `player` ( `age`);
+CREATE TAG INDEX `player_name_index` ON `player` ( `name`(64));
+CREATE TAG INDEX `team_name_index` ON `team` ( `name`(64));
+CREATE EDGE INDEX `like_likeness_index` ON `like` ( `likeness`);
+CREATE EDGE INDEX `serve_start_end_index` ON `serve` ( `start_year`, `end_year`);

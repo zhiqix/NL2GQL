@@ -1,0 +1,37 @@
+﻿# Create Space 
+CREATE SPACE `disease` (partition_num = 10, replica_factor = 1, charset = utf8, collate = utf8_bin, vid_type = FIXED_STRING(1024));
+:sleep 20;
+USE `disease`;
+
+# Create Tag: 
+CREATE TAG `check` ( `name` string NULL) ttl_duration = 0, ttl_col = "";
+CREATE TAG `cure` ( `name` string NULL) ttl_duration = 0, ttl_col = "";
+CREATE TAG `department` ( `name` string NULL) ttl_duration = 0, ttl_col = "";
+CREATE TAG `disease` ( `name` string NULL, `describe` string NULL, `prevent` string NULL, `cause` string NULL, `easy_get` string NULL, `cure_lasttime` string NULL, `symptom` string NULL, `cured_prob` string NULL, `get_prob` string NULL) ttl_duration = 0, ttl_col = "";
+CREATE TAG `drug` ( `name` string NULL) ttl_duration = 0, ttl_col = "";
+CREATE TAG `food` ( `name` string NULL) ttl_duration = 0, ttl_col = "";
+CREATE TAG `producer` ( `name` string NULL) ttl_duration = 0, ttl_col = "";
+CREATE TAG `symptom` ( `name` string NULL) ttl_duration = 0, ttl_col = "";
+
+# Create Edge: 
+CREATE EDGE `accompany_with` () ttl_duration = 0, ttl_col = "";
+CREATE EDGE `common_drug` () ttl_duration = 0, ttl_col = "";
+CREATE EDGE `cure_department` () ttl_duration = 0, ttl_col = "";
+CREATE EDGE `cure_way` () ttl_duration = 0, ttl_col = "";
+CREATE EDGE `do_eat` () ttl_duration = 0, ttl_col = "";
+CREATE EDGE `has_symptom` () ttl_duration = 0, ttl_col = "";
+CREATE EDGE `need_check` () ttl_duration = 0, ttl_col = "";
+CREATE EDGE `no_eat` () ttl_duration = 0, ttl_col = "";
+CREATE EDGE `recommend_drug` () ttl_duration = 0, ttl_col = "";
+CREATE EDGE `recommend_eat` () ttl_duration = 0, ttl_col = "";
+:sleep 20;
+
+# Create Index: 
+CREATE TAG INDEX `check_name_index` ON `check` ( `name`(256));
+CREATE TAG INDEX `cure_name_index` ON `cure` ( `name`(256));
+CREATE TAG INDEX `department_name_index` ON `department` ( `name`(256));
+CREATE TAG INDEX `disease_name_index` ON `disease` ( `name`(256));
+CREATE TAG INDEX `drug_name_index` ON `drug` ( `name`(256));
+CREATE TAG INDEX `food_name_index` ON `food` ( `name`(256));
+CREATE TAG INDEX `producer_name_index` ON `producer` ( `name`(256));
+CREATE TAG INDEX `symptom` ON `symptom` ( `name`(256));

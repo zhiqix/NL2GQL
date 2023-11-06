@@ -1,0 +1,19 @@
+﻿# Create Space 
+CREATE SPACE `harrypotter_new` (partition_num = 10, replica_factor = 1, charset = utf8, collate = utf8_bin, vid_type = FIXED_STRING(128));
+:sleep 20;
+USE `harrypotter_new`;
+
+# Create Tag: 
+CREATE TAG `character` ( `name` string NULL, `born` string NULL, `dead` string NULL, `blood` string NULL, `marital` string NULL, `species` string NULL, `gender` string NULL, `height` string NULL, `hair` string NULL, `eye` string NULL) ttl_duration = 0, ttl_col = "";
+CREATE TAG `college` ( `name` string NULL) ttl_duration = 0, ttl_col = "";
+CREATE TAG `group` ( `name` string NULL) ttl_duration = 0, ttl_col = "";
+
+# Create Edge: 
+CREATE EDGE `belong_to` () ttl_duration = 0, ttl_col = "";
+CREATE EDGE `kindred` ( `rel_type` string NULL) ttl_duration = 0, ttl_col = "";
+CREATE EDGE `learn_from` () ttl_duration = 0, ttl_col = "";
+:sleep 20;
+
+# Create Index: 
+CREATE TAG INDEX `character_name_index` ON `character` ( `name`(128));
+CREATE EDGE INDEX `kindred_rel_type_index` ON `kindred` ( `rel_type`(128));
