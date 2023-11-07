@@ -1,8 +1,6 @@
-# R^3-NL2GQL
+# R3-NL2GQL: A Hybrid Models Approach for for Accuracy Enhancing and Hallucinations Mitigation
 
-<p align="center">
-📍Looking our article at <a href="https://arxiv.org/abs/2311.01862">\(R^3\)-NL2GQL</a>
-</p>
+>**This is the official implementation of the paper "[R3-NL2GQL: A Hybrid Models Approach for for Accuracy Enhancing and Hallucinations Mitigation](https://arxiv.org/abs/2311.01862)".**
 
 <div style="text-align:center">
   <img src="https://github.com/zhiqix/NL2GQL/blob/main/image/fig1.png" width="60%">
