@@ -1,10 +1,10 @@
 # R^3-NL2GQL
 
 <p align="center">
-📍Looking our article at <a href="https://arxiv.org/abs/2311.01862">$R^3$-NL2GQL</a> 
+📍Looking our article at <a href="https://arxiv.org/abs/2311.01862">R^3-NL2GQL</a> 
 </p>
 
-![image](https://github.com/zhiqix/NL2GQL/blob/main/image/fig1.png)
+<img src="https://github.com/zhiqix/NL2GQL/blob/main/image/fig1.png" width="80%">
 
 ## Basic Introduction
 
