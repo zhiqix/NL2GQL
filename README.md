@@ -58,7 +58,7 @@ Each JSON in the test data contains 6 pieces of information, prompt represents n
 
 ## Citation
 If you are using $R^3$-NL2GQL for your work, please cite our paper with:
-
+```
 @misc{zhou2023r3nl2gql,
       title={$R^3$-NL2GQL: A Hybrid Models Approach for for Accuracy Enhancing and Hallucinations Mitigation}, 
       author={Yuhang Zhou and Yu He and Siyu Tian and Dan Chen and Liuzhi Zhou and Xinlin Yu and Chuanjun Ji and Sen Liu and Guangnan Ye and Hongfeng Chai},
@@ -67,3 +67,4 @@ If you are using $R^3$-NL2GQL for your work, please cite our paper with:
       archivePrefix={arXiv},
       primaryClass={cs.CL}
 }
+```
