@@ -15,7 +15,7 @@ The process can be referred to in the paper. In simple terms, it involves using 
 ![image](https://github.com/zhiqix/NL2GQL/blob/main/image/fig4.png)
 
 ## File Introduction
-[]
+![image](https://github.com/zhiqix/NL2GQL/blob/main/image/fig2.png)
 
 ## Data Introduction
 The data construction process involves matching data from different Knowledge Graphs to the NebulaGraph format, as well as generating training and testing data. This process can be code-intensive, and making substantial code modifications is necessary when dealing with different datasets. The data generation pipeline is represented in the following diagram:
