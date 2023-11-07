@@ -1,4 +1,4 @@
-# $R^3$-NL2GQL
+# R^3-NL2GQL
 
 <p align="center">
 📍Looking our article at <a href="https://arxiv.org/abs/2311.01862">$R^3$-NL2GQL</a> 
