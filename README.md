@@ -10,9 +10,10 @@
 
 To address the recent challenges of integrating knowledge graphs with LLMs, we propose an approach based on graph database query language. In previous Knowledge Base Question Answering (KBQA) projects, most of them relied on fixed templates and slot-filling techniques to generate Graph Query Language (GQL). Meanwhile, Natural Language to Structured Query Language (NL2SQL) tasks have achieved high accuracy, but their methods cannot be directly applied to NL2GQL tasks. Leveraging the capabilities of LLMs, we introduce the $R^3$-NL2GQL method, which combines both large and small models to tackle NL2GQL tasks. We also present a new dataset to evaluate its effectiveness.
 
+![image](https://github.com/zhiqix/NL2GQL/blob/main/image/fig4.png)
+
 The process can be referred to in the paper. In simple terms, it involves using a fine-tuned smaller white-box Foundation Model as a reranker, which can identify the required CRUD functions, clauses, and patterns from the input. Another smaller white-box Foundation Model acts as a rewriter, aligning the query with the internal database key-value storage to mitigate ambiguities. Finally, a larger black-box Foundation Model is used for its generalization and generation capabilities to produce more accurate GQL.
 
-![image](https://github.com/zhiqix/NL2GQL/blob/main/image/fig4.png)
 
 ## File Introduction
 ![image](https://github.com/zhiqix/NL2GQL/blob/main/image/fig2.png)
