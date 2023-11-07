@@ -3,24 +3,24 @@
 <p align="center">
 📍Looking our article at <a href="https://arxiv.org/abs/2311.01862">$R^3$-NL2GQL</a> 
 </p>
-![[./image/fig1.png]]
+
+![image](https://github.com/zhiqix/NL2GQL/blob/main/image/fig1.png)
 
 ## Basic Introduction
 
 To address the recent challenges of integrating knowledge graphs with LLMs, we propose an approach based on graph database query language. In previous Knowledge Base Question Answering (KBQA) projects, most of them relied on fixed templates and slot-filling techniques to generate Graph Query Language (GQL). Meanwhile, Natural Language to Structured Query Language (NL2SQL) tasks have achieved high accuracy, but their methods cannot be directly applied to NL2GQL tasks. Leveraging the capabilities of LLMs, we introduce the $R^3$-NL2GQL method, which combines both large and small models to tackle NL2GQL tasks. We also present a new dataset to evaluate its effectiveness.
 
-The process can be referred in the paper. In simple terms, it involves using a fine-tuned smaller white-box Foundation Model as a reranker, which can identify the required CRUD functions, clauses, and patterns from the input. Another smaller white-box Foundation Model acts as a rewriter, aligning the query with the internal database key-value storage to mitigate ambiguities. Finally, a larger black-box Foundation Model is used for its generalization and generation capabilities to produce more accurate GQL.
+The process can be referred to in the paper. In simple terms, it involves using a fine-tuned smaller white-box Foundation Model as a reranker, which can identify the required CRUD functions, clauses, and patterns from the input. Another smaller white-box Foundation Model acts as a rewriter, aligning the query with the internal database key-value storage to mitigate ambiguities. Finally, a larger black-box Foundation Model is used for its generalization and generation capabilities to produce more accurate GQL.
 
-![[./image/fig4.png]]
+![image](https://github.com/zhiqix/NL2GQL/blob/main/image/fig4.png)
 
 ## File Introduction
 []
 
-
 ## Data Introduction
 The data construction process involves matching data from different Knowledge Graphs to the NebulaGraph format, as well as generating training and testing data. This process can be code-intensive, and making substantial code modifications is necessary when dealing with different datasets. The data generation pipeline is represented in the following diagram:
 
-![[./image/fig7.png]]
+![image](https://github.com/zhiqix/NL2GQL/blob/main/image/fig7.png)
 
 In this pipeline, you would typically have various steps, such as data extraction, transformation, and loading (ETL) to convert data from different Knowledge Graphs into the NebulaGraph format. Then, you would proceed with the data generation for training and testing. This may involve further steps like data augmentation, splitting data into training and testing sets, and possibly other data preprocessing tasks.
 
