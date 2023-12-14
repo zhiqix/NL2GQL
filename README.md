@@ -1,6 +1,6 @@
-# R3-NL2GQL: A Hybrid Models Approach for for Accuracy Enhancing and Hallucinations Mitigation
+# R3-NL2GQL: A Hybrid Models Approach for Accuracy Enhancing and Hallucinations Mitigation
 
->**This is the official implementation of the paper "[R3-NL2GQL: A Hybrid Models Approach for for Accuracy Enhancing and Hallucinations Mitigation](https://arxiv.org/abs/2311.01862)".**
+>**This is the official implementation of the paper "[R3-NL2GQL: A Hybrid Models Approach for Accuracy Enhancing and Hallucinations Mitigation](https://arxiv.org/abs/2311.01862)".**
 
 <div align="center">
   <img src="https://github.com/zhiqix/NL2GQL/blob/main/image/fig1.png" width="60%">
